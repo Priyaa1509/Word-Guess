@@ -1,4 +1,4 @@
-# Guess The Word - Flask (SQLite)
+# Word Guess Game
 
 1. Create virtualenv & install:
    python -m venv venv
@@ -15,11 +15,10 @@
 Admin account (created by init_db.py):
   username: admin
   password: Admin@123
-(Please change the password or delete admin after testing.)
-
 Notes:
 - Each user can try up to 3 different words per day.
 - Each word gives max 5 guesses.
 - Password rules: at least 5 chars, include a digit and one of $ % * @.
 - Username rules: at least 5 letters, include both upper and lower-case letters, letters only.
 #
+
