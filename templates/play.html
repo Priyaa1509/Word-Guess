@@ -1,0 +1,62 @@
+
+ {% extends "base.html" %}
+{% block content %}
+<div class="container game-container">
+    <h2>Word Guess Game</h2>
+
+     <p>Attempted for today: {{ games_played_today }} / 3</p>
+
+    {% if game_over %}
+        <div class="game-over-message">
+            <h3>{{ message }}</h3>
+            <p>You can start a new game tomorrow or try again if you have daily games left.</p>
+            <a href="{{ url_for('play') }}" class="button primary">Play Again (if available)</a>
+        </div>
+    {% else %}
+        
+        <div id="game-board">
+            {% for g in previous_guesses %}
+                <div class="guess-row">
+                    {% for i in range(5) %}
+                        <div class="letter-box {{ g.feedback[i] }}">{{ g.word[i] }}</div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+
+            
+            {% for i in range(guesses_made, 5) %}
+                <div class="guess-row">
+                    {% for j in range(5) %}
+                        <div class="letter-box"></div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+
+        
+        <div class="input-area">
+            <input type="text" id="word-input" maxlength="5"
+                   placeholder="Enter your 5-letter guess"
+                   style="text-transform: uppercase;"
+                   autofocus autocomplete="off">
+            <button id="submit-guess" class="button primary">Guess</button>
+
+        <p id="message-area" class="game-message"></p>
+<p>Guesses remaining: <span id="guesses-remaining">{% if game_over %}0{% else %}{{ 5 - guesses_made }}{% endif %}</span></p>    {% endif %}
+</div>
+
+
+<script id="game-data" type="application/json">
+{
+    "gameSessionId": {{ game_session_id|tojson|safe }},
+    "initialGuessesMade": {{ guesses_made|tojson|safe }},
+    "previousGuesses": {{ previous_guesses|tojson|safe }},
+    "gameOver": {{ game_over|tojson|safe }}
+}
+</script>
+
+
+<script src="{{ url_for('static', filename='play.js') }}"></script>
+{% endblock %} 
+
+

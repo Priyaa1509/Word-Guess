@@ -1,0 +1,360 @@
+:root {
+    --primary-color: #4CAF50; /* Green */
+    --secondary-color: #007bff; /* Blue */
+    --text-color: #333;
+    --background-color: #f2f5fa;
+    --header-bg: #2c3e50;
+    --header-text: #fff;
+    --border-color: #e0e0e0;
+
+    --color-green: #6aaa64; 
+    --color-orange: #e89e45;
+    --color-grey: #787c7e;
+    --color-light-grey: #d3d6da;
+
+    --radius: 12px;
+    --shadow: 0 6px 16px rgba(0,0,0,0.12);
+    --transition: all 0.3s ease;
+}
+
+/* --- Base --- */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #f2f5fa, #e8edf5);
+    color: var(--text-color);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* --- Header --- */
+header {
+    background: linear-gradient(135deg, var(--header-bg), #1a252f);
+    color: var(--header-text);
+    padding: 15px 20px;
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+nav .logo {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: var(--header-text);
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: var(--transition);
+}
+
+nav .logo:hover {
+    color: var(--primary-color);
+    transform: scale(1.05);
+}
+
+.nav-links a, .nav-links span {
+    color: var(--header-text);
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 1.1em;
+    transition: var(--transition);
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+/* --- Main --- */
+main {
+    flex: 1;
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 30px;
+    transition: var(--transition);
+}
+
+.container:hover {
+    transform: translateY(-3px);
+}
+
+/* --- Forms --- */
+.form-container {
+    max-width: 500px;
+    margin: 40px auto;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    font-size: 1em;
+    transition: var(--transition);
+}
+
+.form-control:focus {
+    border-color: var(--secondary-color);
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.25);
+}
+
+/* --- Buttons --- */
+.button {
+    display: inline-block;
+    padding: 12px 22px;
+    border-radius: var(--radius);
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    transition: var(--transition);
+}
+
+.button.primary {
+    background: var(--primary-color);
+    color: white;
+}
+
+.button.primary:hover {
+    background: #45a049;
+    transform: translateY(-2px) scale(1.05);
+}
+
+.button.secondary {
+    background: var(--secondary-color);
+    color: white;
+}
+
+.button.secondary:hover {
+    background: #0056b3;
+    transform: translateY(-2px) scale(1.05);
+}
+
+.button:disabled {
+    background-color: var(--color-grey);
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* --- Game Board --- */
+.game-container {
+    text-align: center;
+    max-width: 600px;
+    margin: 40px auto;
+}
+
+#game-board {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px auto;
+    width: fit-content;
+}
+
+.game-message {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #1a3c47;
+    background: linear-gradient(135deg, #b2d7eb, #d4ecf8);
+    padding: 10px 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border-left: 5px solid #0077b6;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+.guess-row {
+    display: flex;
+    gap: 10px;
+}
+
+.letter-box {
+    width: 60px;
+    height: 60px;
+    border: 2px solid var(--color-light-grey);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 8px;
+    background: #f1f1f1;
+    transition: transform 0.4s ease, background-color 0.4s ease;
+}
+
+.letter-box.filled {
+    border-color: var(--color-grey);
+    background: #fff;
+    color: var(--text-color);
+}
+
+/* Flip animation for results */
+.letter-box.green,
+.letter-box.orange,
+.letter-box.grey {
+    color: white;
+    animation: flip 0.6s forwards;
+}
+
+.letter-box.green { background-color: var(--color-green); border-color: var(--color-green); }
+.letter-box.orange { background-color: var(--color-orange); border-color: var(--color-orange); }
+.letter-box.grey { background-color: var(--color-grey); border-color: var(--color-grey); }
+
+@keyframes flip {
+    0% { transform: rotateX(0); }
+    50% { transform: rotateX(90deg); }
+    100% { transform: rotateX(0); }
+}
+
+/* --- Input --- */
+#word-input {
+    width: 280px;
+    padding: 12px;
+    font-size: 1.2em;
+    text-align: center;
+    text-transform: uppercase;
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius);
+    transition: var(--transition);
+}
+
+#word-input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.25);
+}
+
+/* --- Flash Messages --- */
+.flash-messages {
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.alert {
+    padding: 12px 20px;
+    border-radius: var(--radius);
+    margin-bottom: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--header-bg);
+    color: var(--header-text);
+    margin-top: auto;
+    box-shadow: 0 -2px 8px rgba(0,0,0,0.12);
+    font-size: 0.95em;
+}
+
+/* ----Alert Messages ---- */
+/* Container for all messages, positioning them in the top-center */
+.message-container {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 400px;
+    z-index: 1050; 
+}
+
+/* Base styles for the alert messages */
+.alert {
+    padding: 15px 20px; /* Slightly more horizontal padding */
+    margin-bottom: 15px;
+    border-radius: 12px; /* A bit more rounded corners */
+    font-size: 16px;
+    font-weight: 500; /* Add some font weight */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Stronger, more defined shadow */
+    animation: bounceIn 0.6s ease-out; /* Use a new 'bounceIn' animation */
+    transition: transform 0.3s, opacity 0.3s; /* Smooth transitions for closing */
+}
+
+/* Updated color palette for better contrast and feel */
+.alert-info {
+    background-color: #3e7de6; /* A more vibrant blue */
+    color: #ffffff;
+}
+.alert-success {
+    background-color: #28a745; /* Standard green for success */
+    color: #ffffff;
+}
+.alert-danger {
+    background-color: #dc3545; /* A standard red for errors */
+    color: #ffffff;
+}
+
+/* Close button style */
+.close-btn {
+    cursor: pointer;
+    font-size: 24px; /* Slightly larger close button */
+    font-weight: bold;
+    line-height: 1;
+    margin-left: 10px; /* Space between text and button */
+    transition: color 0.2s;
+}
+
+.close-btn:hover {
+    color: #f8f9fa; /* Lighter color on hover */
+}
+
+/* New bounce-in animation */
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50px);
+    }
+    60% {
+        opacity: 1;
+        transform: translate(-50%, 10px);
+    }
+    100% {
+        transform: translate(-50%, 0);
+    }
+}

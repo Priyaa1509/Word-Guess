@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container welcome-container">
+        <h1>Welcome to the Word Guess Game!</h1>
+        <p>Test your vocabulary and guessing skills.</p>
+        <p>Login or register to start playing.</p>
+        <div class="welcome-buttons">
+            <a href="{{ url_for('login') }}" class="button primary">Login</a>
+            <a href="{{ url_for('register') }}" class="button secondary">Register</a>
+        </div>
+    </div>
+{% endblock %}
