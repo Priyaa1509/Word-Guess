@@ -14,8 +14,6 @@ A browser-based word-guessing game built with Python and Flask. This project cha
 -----
 
 ### Features
-
-  * **User Authentication**: Users can register and log in to track their personal game history and progress.
   * **Daily Game Limit**: A maximum of three games can be played per day to encourage users to return.
   * **Intelligent Feedback**: Guesses are evaluated with a color-coded system:
       * **Green**: Correct letter in the correct position.
@@ -110,3 +108,4 @@ Word-Guess/
     ├── admin_reports.html # Admin dashboard page
     └── pdf_report.html   # Daily and user report page
 ```
+
